@@ -11,6 +11,8 @@
 虽然该模板主要用于排版江南大学的学位论文，但亦可经过简单的设置或修改用于排版国内其他大学的学位论文。
 
 ## Useful
+latex的在线字数统计：http://app.uio.no/ifi/texcount/online.php
+
 how to write bibtex
 ```
 @article 期刊杂志的论文
