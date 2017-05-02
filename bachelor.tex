@@ -12,7 +12,7 @@
 \studentnum{1030413620}
 % 导师姓名职称
 \supervisor{徐华}
-\supervisorpos{教授}
+\supervisorpos{副教授}
 % 第二行导师姓名职称，仿照第一行填写，没有则留空
 \supervisorb{}
 \supervisorbpos{}
@@ -50,13 +50,15 @@ basicstyle=\normalsize\ttfamily,
 
 % 论文的中文摘要
 \begin{abstract}
-聊天机器人是目前社会的热点，许多服务商在软件中集成了聊天机器人，来取代部分人工咨询的任务。聊天机器人在我们生活中的应用已经非常广泛了。
+一、设计任务来源。聊天机器人是目前社会的热点，许多服务商在软件中集成了聊天机器人，来取代部分人工咨询的任务。聊天机器人在我们生活中的应用已经非常广泛了。各大公司都纷纷推出了自家的聊天机器人。但是，聊天机器人在如今也不是只有大公司可以提供的特权服务，因为依靠一种新兴的服务——聊天机器人平台，就可以让个人用户或小公司，定制属于自己的聊天机器人，同时只需要比较低的服务购买支出。Facebook Messenger 是最早的且流行最快的平台之一，10 亿多每个月活跃用户。在 Facebook 向外界尤其是开发人员开放了他们的机器人平台，在短短几个月内，就已有 23,000 多名程序开发者开始构建机器人并投入生产环境了。另外今年有一个以提供公司团队群组消息发布平台服务的公司，渐渐成为了人们讨论的热点。截至 2016 年 2 月，它每月拥有 230 万活跃用户，而且这一数字依然在快速增长。Slack 是当前的聊天机器人复兴浪潮中的先驱之一。为了小公司和个人用户也能拥有自己的聊天机器人，国外的许多公司推出了聊天机器人平台的服务，通过这些服务，用户只需要学习一定的使用规则，就能创建自己的聊天机器人了。但是他们有的依然是基于传统的 AIML 系统构建的，用户不得不学习晦涩且难于记忆的 AIML 标签。同时，国内基于 AIML 的聊天机器人平台很少，有部分原因是因为 AIML 不对英语国家之外的国家提供官方支持。
 
-各大公司都纷纷推出了自家的聊天机器人。为了小公司和个人用户也能拥有自己的聊天机器人，国外的许多公司推出了聊天机器人平台的服务，通过这些服务，用户只需要学习一定的使用规则，就能创建自己的聊天机器人了。但是他们有的依然是基于传统的 AIML 系统构建的，用户不得不学习晦涩且难于记忆的 AIML 标签。同时，国内基于 AIML 的聊天机器人平台很少，有部分原因是因为 AIML 不对英语国家之外的国家提供官方支持。
+二、设计标准。本文以试图解决上述问题作为切入点，剖析了 AIML 源码和学习作者发表的文章，提出了开发聊天机器人的新的方案。
 
-本文以试图解决上述问题作为切入点，剖析了 AIML 源码和学习作者发表的文章，提出了开发聊天机器人的新的方案。首先，确定了实现的功能和 ALICE 保持基本一致。摒弃全部的 AIML 模板规则，并设计新的规则。解决了 ALICE 对中文的不支持的问题。并且使用 Web App 的形式开发了聊天机器人的界面。
+首先，确定了实现的功能和 ALICE 保持基本一致，但只实现其中一个子集。然后，摒弃全部的 AIML 模板规则，并设计新的规则。采用 Python3 开发，模板编码都采用 UTF-8，自然解决了 ALICE 对中文的不支持的问题。最后，使用 Web App 的形式，采取 MVC 结构，基于 AngularJS 开发了聊天机器人的界面，界面上具备的功能有基础的聊天功能，输入框，显示窗；注册登录页面；训练按钮。
 
-编写了完善的单元测试。系统部署在了线上，开放给了用户使用，运行效果检测下来一直保持良好。
+三、设计原则。采取了需求驱动开发。由于本项目重点是聊天机器人的实现，主要工作在于思考一个优雅的设计方案，怎么降低模板编写的复杂度和冗余，因此不会放太多精力在它的界面上。所以，采取前后端分离，并且优先实现聊天机器人部分的功能，前端的功能只是提供一个 demo 的作用。另外，开发过程中还需要编写完善的单元测试，来保证程序的正确性。系统全部部署在了线上，开放给了用户使用，运行效果要一直保持良好。
+
+四、主要技术资料。AIML 和 ALICE 官网；Github 里的源代码和网上的博客；已有的学术论文。
 
 
 \keywords{聊天机器人；AIML；中文分词；JSON}
@@ -64,13 +66,15 @@ basicstyle=\normalsize\ttfamily,
 
 % 论文的英文摘要
 \begin{englishabstract}
-Chat robot is the current social hot spots, many service providers in the software integrated chat robot, to replace some of the task of manual advice. Chat robots's application in our lives has been very wide.
+1. The design task source. Chat robot is the current social hot spots, many service providers in their software integrated chat robot, to replace some of the task of manual advice. Chat robots's application in our lives has been very wide. The major companies have launched their own chat robot. However, only a large company can provide the privilege service of chat robots, because relying on a new service - chat robot platform, you can let individual users or small companies, customize their own chat robots, and only need to compare Low service purchase expenses. Facebook Messenger is one of the earliest and most popular platforms, more than 1 billion active users per month. In the past few months, more than 23,000 programmers have started building robots and putting into production environments, where Facebook has opened up their robot platforms to the outside world, especially developers. In addition, this year there is a company to provide company team news release platform services company, has gradually become a hot discussion. As of February 2016, it has 2.3 million active users per month, and this figure is still growing rapidly. Slack is one of the pioneers of the current chat robot revival. For small companies and individual users can have their own chat robots, many foreign companies launched a chat robot platform services, through these services, users only need to learn a certain use of the rules, you can create your own chat robot. But some of them are still based on the traditional AIML system to build, the user had to learn obscure and difficult to remember the AIML label. At the same time, there are few platforms for domestic AIML-based chat robots, partly because AIML does not provide official support to countries outside of English-speaking countries.
 
-The major companies all have launched their own chat robot. For small companies and individual users can have their own chat robots, many foreign companies launched a chat robot platform services, through these services, users only need to learn a certain use of the rules, you can create your own chat robot. But some of them are still based on the traditional AIML system to build, the user had to learn obscure and difficult to remember the AIML tags. At the same time, there are few platforms for domestic AIML-based chat robots, partly because AIML does not provide official support to countries outside of English-speaking countries.
+2. the design standards. In this paper, we try to solve the above problems as a starting point, analyze the AIML source code and study the author's article, and propose a new scheme for developing chat robots.
 
-This paper attempts to solve the above problems as a starting point, analyzes the AIML source code and studies the author published the article, proposed the development of new way for chat robot program. First of all, to determine the realization of the function keep pace with ALICE. Depraciate all AIML template rules and design new rules. Solved the problems of ALICE's unsupport for Chinese language. And Using the form of Web App to develop the chat robot interface.
+First, it is determined that the implemented functionality is consistent with ALICE, but only one of the subsets is implemented. Then, abandon all the AIML template rules and design new rules. Using Python3 development, the template code are used UTF-8, ALICE naturally solve the problem of Chinese support. Finally, the use of Web App form, take the MVC structure, based on AngularJS developed a chat robot interface, the interface has the function of the basic chat function, input box, display window; registration login page; training button.
 
-Wrote a perfect unit test. The system deployed on the server, open to the user to use, and the test result after running has been maintained well.
+3. the design principles. Took a demand-driven development. As the focus of this project is to achieve the chat robot, the main work is to think about an elegant design, how to reduce the complexity of writing templates and redundancy, so will not put too much energy in its interface. So, to take the front and rear separation, and give priority to the function of the chat robot part, front-end function is to provide a demo role. In addition, the development process also need to prepare a perfect unit test, to ensure the correctness of the program. The system all deployed in the online, open to the user to use, the operation effect should always be good.
+
+4. the main technical information. AIML and ALICE official website; Github source code and online blog; existing academic papers.
 
 % 英文关键词。关键词之间用英文半角逗号隔开，末尾无符号。
 \englishkeywords{Chatbot, AIML, Chinese word segmentation, JSON}
@@ -176,7 +180,7 @@ Wrote a perfect unit test. The system deployed on the server, open to the user t
 \chapter{ALICE和AIML}
 \section{ALICE的工作原理及其优缺点}
 \subsection{ALICE的工作原理}
-ALICE 是人工语言在线机器人(The Artificial Linguistic Internet Computer Entity)的缩写，是一个可以聊天的程序。 ALICE 的知识库是存在 AIML 文件中的，AIML 是人工智能标记语言的缩写(The Artificial Intelligent Mark up Language)，它相当于可扩展标记语言 XML 的一种派生。
+ALICE \cite{夏天2004基于}是人工语言在线机器人(The Artificial Linguistic Internet Computer Entity)的缩写，是一个可以聊天的程序。 ALICE 的知识库是存在 AIML 文件中的，AIML 是人工智能标记语言的缩写(The Artificial Intelligent Mark up Language)，它相当于可扩展标记语言 XML 的一种派生。
 
 剖析 ALICE 的工作原理，可以从源代码出发。因为 ALICE 有很多语言的实现，而本项目是 python 实现的，所以就来看同样是 python 实现\cite{github-pyaiml}的 ALICE。
 
@@ -294,7 +298,7 @@ class Kernel:
 
 
 \subsection{ALICE的优点及局限}
-ALICE 是一个优秀的开源机器人产品。它的优点有。
+ALICE 是一个优秀的开源机器人产品\cite{杨斌艳2003人与机器的对话}。它的优点有。
 
 \begin{itemize}
 \item 存在时间长，积累了大量的语料库。截止目前 ALICE 的英文语料库已经非常庞大了。
@@ -351,7 +355,7 @@ name是预先定义的变量，第一种表示name变量的值如果和value相�
 \chapter{中文分词}
 \section{中文分词理论基础}
 \subsection{中文分词是什么}
-众所周知，英文是以 词为单位的，词和词之间是靠空格隔开，而中文是以字为单位，句子中所有的字连起来才能描述一个意思。例如，英文句子I am a student，用中文则为：“我是一个学生”。计算机可以很简单通过空格知道student是一个单词，但是不能很容易明白“学”、“生”两个字合起来 才表示一个词。中文分词，就是把中文句子或者段落文章，切分成一个一个有意思的词和字。同时保证机器切分与人工切分的结果尽可能保持一致。那么如何让机器理解句子呢，这其实属于自然语言处理的范畴了。
+众所周知，英文是以 词为单位的，词和词之间是靠空格隔开，而中文是以字为单位，句子中所有的字连起来才能描述一个意思。例如，英文句子I am a student，用中文则为：“我是一个学生”。计算机可以很简单通过空格知道student是一个单词，但是不能很容易明白“学”、“生”两个字合起来 才表示一个词。中文分词，就是把中文句子或者段落文章，切分成一个一个有意思的词和字。同时保证机器切分与人工切分的结果尽可能保持一致。那么如何让机器理解句子呢，这其实属于自然语言处理\cite{时鸿涛2009基于自然语言的语义推理接口}的范畴了。
 
 \subsection{算法分类}
 中文分词的主要困难在于分词歧义\cite{matrix-blog}。“结婚的和尚未结婚的”，应该分成“结婚／的／和／尚未／结婚／的”，还是“结婚／的／和尚／未／结婚／的”？人来判断很容易，要交给计算机来处理就麻烦了。问题的关键就是，“和尚未”里的“和尚”也是一个词，“尚未”也是一个词，从计算机的角度看上去，两者似乎都有可能。对于计算机来说，这样的分词困境就叫做“交集型歧义”。有时候，交集型歧义的“歧义链”有可能会更长。“中外科学名著”里，“中外”、“外科”、“科学”、“学名”、“名著”全是词，光从词库的角度来看，随便切几刀下去，得出的切分都是合理的。类似的例子数不胜数，“提高产品质量”、“鞭炮声响彻夜空”、“努力学习语法规则”等句子都有这样的现象。在这些极端例子下，分词算法谁优谁劣可谓是一试便知。
@@ -621,39 +625,112 @@ def test_reply_template_generate():
 
 \section{用户界面}
 
-主界面的外观模仿我们通常使用的聊天软件。对话框，输入框，发送按钮，菜单等。
+主界面的外观模仿我们通常使用的聊天软件。既具备对话框，输入框，发送按钮，菜单等基本功能。
+
+\subsection{需求描述}
+本论文设计了一个通用的聊天机器人开发规则，精华聚集在了后端聊天机器人的内容上，因此用户界面部分要以突出聊天机器人能回复的内容为核心来展现。由此可以提出基本的需求如下。
+\begin{enumerate}
+\item 聊天窗口。具备自动滚动功能；用户发送的和机器回复的内容有明显的区分；随着屏幕大小的调整自动适应。
+\item 输入框。具备文字输入功能，用户可以通过回车或者点击右侧的发送按钮来发送内容。
+\end{enumerate}
+
+另外，可以随着业务规模的增大，添加其他的功能，比如用户注册，后台管理，自定义训练内容等等。
+
+
+\subsection{设计思路和效果图}
+
+界面采取 Material design 的深色风格，主界面的核心伪代码如下。
+
+\begin{lstlisting}[language=C]
+export default angular.module('chatWindow', ['ngMaterial', 'luegg.directives'])
+.controller('chatwindowCtrl', ['$scope', '$timeout', 'jsonbotService', function($scope, $timeout, jsonbotService) {
+    ...
+}])
+.component(sidenavContainer.name, sidenavContainer.config)
+.component(chatWindow.name, chatWindow.config)
+.component(chattingContainer.name, chattingContainer.config)
+.component(inputContainer.name, inputContainer.config)
+.service('jsonbotService', jsonbotService);
+\end{lstlisting}
+
+从这里可以看到，组件化开发的好处，sidenavContainer, inputContainer, jsonbotService 顾名思义分别是左边栏窗口组件，输入框组件，聊天机器人的服务组件。这样解耦开来的代码可以让项目随时往上迭代。
+
+主界面和用户聊天的实时截图。
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width= 0.5\textwidth]{chat1.png}\\
-  \caption{主界面截图}\label{fig:pic4}
+  \includegraphics[width= 0.5\textwidth]{chat4.png}\\
+  \caption{用户聊天截图}\label{fig:pic6}
 \end{figure}
 
-用户登录页面，采取左侧弹出的形式。
+从图\ref{fig:pic6}中可以看到，可以向聊天机器人询问天气，这里返回的是当地的实时天气，包括位置，气象和温度三个参数。它背后调用的第三方专门的天气接口，数据返回速度取决于当时的网络情况。当询问的语句是，你知道* ，或者 帮我搜* ，这种格式的时候，首先会提取句子里的关键词，这里是“狐狸”，然后会自动搜索百度百科的内容，如上所示结果返回了关于狐狸的词条。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width= 1.0\textwidth]{chattopic.png}\\
+  \caption{不同聊天话题截图}\label{fig:pic7}
+\end{figure}
+
+从图\ref{fig:pic7}可以看到聊天机器人能回答情感类的和抱怨类的话题，其实整个知识库总共支持二十多种类型的回复主题，这些主题都是从之前的 AIML 积累的知识库转换而来的，具体有哪些主题请看表\ref{table:t3}。
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{p{38mm}p{38mm}p{38mm}}
+    \toprule
+    \textbf{话题} & \textbf{话题} & \textbf{话题}\\
+    \midrule
+    Greeting, Complain, Discuss, Encourage, External, Film, Food, Game & Healthy, Inherence, Internet, Job, Joke, Life, Music & Master, Plan, Rude, Sentiment, Sex, SmallWord, Travel, gossip\\
+    \bottomrule
+  \end{tabular}
+  \caption{JsonBot 支持的聊天话题}\label{table:t3}
+\end{table}
+
+
+用户登录页面，采取左侧弹出的形式。此论文里没有实现的必要，故只实现了 UI ，没有实现真正的后台。下面是实现代码和截图。
+
+\begin{lstlisting}[language=C]
+export default {
+	name: 'sidebarContainer', 
+	config: {
+		controller: ['$scope', '$mdSidenav', function($scope, $mdSidenav){
+            ...
+		}],
+		bindings: {issidebarToggle:'='},
+		template: sbhtml
+\end{lstlisting}
 
 
 \begin{figure}[H]
   \centering
   \includegraphics[width= 0.5\textwidth]{chat2.png}\\
-  \caption{用户登录页截图}\label{fig:pic4}
+  \caption{用户登录页截图}\label{fig:pic8}
 \end{figure}
 
 
-训练按钮。因为目前的语料库构建好之后，被用户私自改动是很难再改回来的，所以目前没有支持该功能的打算。
+训练按钮。因为目前的语料库构建好之后，被用户私自改动是很难再改回来的，所以目前没有支持该功能的打算，只是提供展示。下面是实现代码和截图。
+
+\begin{lstlisting}[language=C]
+export default {
+	name: 'inputContainer', 
+	config: {
+		controller: ['$scope', function($scope){
+			...
+			};
+		}],
+		bindings: {
+			inputedCallback:'&'
+		},
+		template: iphtml
+	}};
+\end{lstlisting}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width= 0.5\textwidth]{chat3.png}\\
-  \caption{训练按钮截图}\label{fig:pic4}
+  \caption{训练按钮截图}\label{fig:pic9}
 \end{figure}
 
-用户聊天截图。
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width= 0.5\textwidth]{chat4.png}\\
-  \caption{用户聊天截图}\label{fig:pic4}
-\end{figure}
 
 
 \chapter{总结与展望}
@@ -687,12 +764,21 @@ Web 界面只支持移动端，可以增加 PC 端实现。
 
 知识库的构建不够。由于此类聊天机器人都是依赖于人工编写的知识库，因此很难达到理想情况下的“足够”。只能一点一点依靠社区积累。
 
-\begin{acknowledgement}
-  首先感谢我的指导老师对我论文的帮助。然后感谢朋友，以及开源社区的贡献者们，对我项目开发和实现过程中的指导。
-\end{acknowledgement}
-
 % 参考文献
 \nocite{*}
 \bibliography{bachelor}
+
+\begin{acknowledgement}
+  本论文在我的导师徐华老师的悉心指导和作者的努力之下，终于圆满完成了，感谢我的指导老师对我论文的帮助，感谢朋友，以及开源社区的贡献者们，对我项目开发和实现过程中的指导。你们的耐心和无私，让我在开发和设计过程中，少走了很多弯路。我深深的感受到了自己在本科阶段的进步，以后在工作上一定也会保持独立思考的习惯，勤奋工作，期待达到更高的层级。现在我可以骄傲地给我的本科阶段画上一个完美的句号了。细细地回顾这段时光，内心里的感激之情溢于言表。
+
+  其次，我还要感谢我的班主任，蒋敏老师。从刚入学教我们离散数学开始，我就被蒋老师的严谨缜密的讲课风格所深深吸引。在后面的几年里，蒋老师给了我很多发展的机会，包括做项目和去学校外面实习。这些珍贵的锻炼机会对我的影响很大，我目前能得到的一切都离不开老师的敦敦教诲和提拔。
+
+  同时我还要感谢我的室友，社团的学长们。正是我们之间的技术讨论，交流还有竞争，让我明白了人生如逆水行舟，不进则退。当你还在迷茫的时候，别人已经翻过了好几座山峰了。感谢你们的陪伴，感谢所有的朋友们。
+
+  再次，感谢我的父母，一直陪伴着我的求学生涯，给了我最好的条件，今天的我有一半的功劳归功于他们，离不开他们的无私奉献，离不开他们的爱。
+
+  最后，向所有百忙之中审阅本论文和参与答辩的所有老师致以由衷的感谢，谢谢你们给我提出的意见和建议，我会始终保持虚心的态度，向您们学习。
+
+\end{acknowledgement}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
