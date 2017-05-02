@@ -848,7 +848,7 @@ FUNCTION {format.citedate} {                      % String Emtry::format_citedat
                                                   % // since if the URL contains special symbols such
                                                   % // as '%', the \biburl{} will be broken.
 FUNCTION {format.url} {                           % String Emtry::format_url(String url) {
-  "\newline\url{" swap$ * "}" *                   %   return "\newline\url{" + url + "}";
+  "\url{" swap$ * "}" *                   %   return "\url{" + url + "}";
 }                                                 % }
                                                   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1678,10 +1678,26 @@ FUNCTION {online} {                               % void Entry::online() {
                                                   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                                   %
-FUNCTION {webpage} {                              % void Entry::online() {
-  online                                          %   online();
+FUNCTION {webpage} {                              % void Entry::webpage() {
+                                     %   
+  start.bibitem                                   %   start_bibitem();
+  false output.author                             %   output_author(false);
+  true output.title                               %   output_title(true);
+  publisher empty$ not {                          %   if (! empty(this.publisher)) {
+    address empty$ not {                          %     if (! empty(this.address)) {
+      true output.address                         %       output_address(true);
+      true output.publisher                       %       output_publisher(true);
+      cap.comma write$                            %       write(cap_comma);
+    } {                                           %     } else {
+      true output.publisher.no.address            %       output_publisher_no_address(true);
+      cap.comma write$                            %       write(cap_comma);
+    } if$                                         %     }
+  } {                                             %   } else {
+                                                  %     
+  } if$                                           %   }
+  true output.url                                 %   output_url(true);
+  end.bibitem                                     %   end_bibitem();
 }                                                 % }
-                                                  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                                   %
 FUNCTION {program.impl} {                         % void Entry::program_impl() {
