@@ -11,6 +11,8 @@
 虽然该模板主要用于排版江南大学的学位论文，但亦可经过简单的设置或修改用于排版国内其他大学的学位论文。
 
 ## Useful
+pdf体积减小，主要把图片质量降低，效果惊人 https://tex.stackexchange.com/questions/14429/pdftex-reduce-pdf-size-reduce-image-quality
+
 latex的在线字数统计：http://app.uio.no/ifi/texcount/online.php
 
 how to write bibtex
