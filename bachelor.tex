@@ -686,7 +686,7 @@ export default angular.module('chatWindow', ['ngMaterial', 'luegg.directives'])
 \end{table}
 
 
-用户登录页面，采取左侧弹出的形式。此论文里没有实现的必要，故只实现了 UI ，没有实现真正的后台。下面是实现代码和截图。
+用户注册，登录页面，采取左侧弹出的形式。下面是实现代码和截图。
 
 \begin{lstlisting}[language=C]
 export default {
@@ -702,12 +702,12 @@ export default {
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width= 0.5\textwidth]{chat2.png}\\
+  \includegraphics[width= 1.0\textwidth]{login.png}\\
   \caption{用户登录页截图}\label{fig:pic8}
 \end{figure}
 
 
-训练按钮。因为目前的语料库构建好之后，被用户私自改动是很难再改回来的，所以目前没有支持该功能的打算，只是提供展示。下面是实现代码和截图。
+功能按钮。下面是实现代码和截图。
 
 \begin{lstlisting}[language=C]
 export default {
@@ -727,10 +727,27 @@ export default {
 \begin{figure}[H]
   \centering
   \includegraphics[width= 0.5\textwidth]{chat3.png}\\
-  \caption{训练按钮截图}\label{fig:pic9}
+  \caption{功能按钮截图}\label{fig:pic9}
 \end{figure}
 
-
+训练模式。与 jsonbot 文件保持同样的语法(既有 U，S 规则)。每次请求包括一个问句和一个答句。具体示范和代码请看如下图。
+\begin{lstlisting}[language=C]
+let trainning_starting = (input)=>{
+		if(input == '退出'){
+            ...
+			return ;
+		}
+		...
+		if (ret == 'in progress'){
+			...
+		}
+	};
+\end{lstlisting}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width= 1.0\textwidth]{train.png}\\
+  \caption{训练模式截图}\label{fig:pic9}
+\end{figure}
 
 
 \chapter{总结与展望}
