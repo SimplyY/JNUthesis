@@ -665,11 +665,7 @@ export default angular.module('chatWindow', ['ngMaterial', 'luegg.directives'])
 
 从图\ref{fig:pic6}中可以看到，可以向聊天机器人询问天气，这里返回的是当地的实时天气，包括位置，气象和温度三个参数。它背后调用的第三方专门的天气接口，数据返回速度取决于当时的网络情况。当询问的语句是，你知道* ，或者 帮我搜* ，这种格式的时候，首先会提取句子里的关键词，这里是“狐狸”，然后会自动搜索百度百科的内容，如上所示结果返回了关于狐狸的词条。
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width= 1.0\textwidth]{chattopic.png}\\
-  \caption{不同聊天话题截图}\label{fig:pic7}
-\end{figure}
+
 
 从图\ref{fig:pic7}可以看到聊天机器人能回答情感类的和抱怨类的话题，其实整个知识库总共支持二十多种类型的回复主题，这些主题都是从之前的 AIML 积累的知识库转换而来的，具体有哪些主题请看表\ref{table:t3}。
 
@@ -685,18 +681,35 @@ export default angular.module('chatWindow', ['ngMaterial', 'luegg.directives'])
   \caption{JsonBot 支持的聊天话题}\label{table:t3}
 \end{table}
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width= 1.0\textwidth]{chattopic.png}\\
+  \caption{不同聊天话题截图}\label{fig:pic7}
+\end{figure}
 
 用户注册，登录页面，采取左侧弹出的形式。下面是实现代码和截图。
 
 \begin{lstlisting}[language=C]
-export default {
-	name: 'sidebarContainer', 
-	config: {
-		controller: ['$scope', '$mdSidenav', function($scope, $mdSidenav){
-            ...
-		}],
-		bindings: {issidebarToggle:'='},
-		template: sbhtml
+$scope.login = (ev) => {
+    if(!$scope.user.name || !$scope.user.pw){
+    	showDialog('账号或密码不能为空', ev);
+    	return;
+    }
+    $scope.user.name = jsonbotService.filterSafetyString($scope.user.name);
+    jsonbotService.validateLogin($scope.user)
+    .then((res)=>{
+    	if(res.data == 'Success') {
+    		self.isLogined = true;
+    		showDialog('登录成功', ev);
+    	}else{
+    		showDialog('登录失败，请点击返回重新登录', ev);
+    	}
+    },(res)=>{
+    	console.log(res);
+    	showDialog('登录失败，请检查网络', ev);
+    });
+    $scope.user = {};
+};
 \end{lstlisting}
 
 
@@ -733,15 +746,18 @@ export default {
 训练模式。与 jsonbot 文件保持同样的语法(既有 U，S 规则)。每次请求包括一个问句和一个答句。具体示范和代码请看如下图。
 \begin{lstlisting}[language=C]
 let trainning_starting = (input)=>{
-		if(input == '退出'){
-            ...
-			return ;
-		}
-		...
-		if (ret == 'in progress'){
-			...
-		}
-	};
+	if(input == '退出'){
+		$scope.$$prevSibling.sessionData = $scope.$$prevSibling.chat.sessionData = $scope.$$prevSibling.sessionDataStash;
+		$scope.$$prevSibling.sessionDataStash = null;
+		$scope.$$prevSibling.isTrainning = false;
+		return ;
+	}
+	let ret = jsonbotService.trainning(input);
+	if (ret == 'in progress'){
+		$scope.$$prevSibling.sessionData.push({username: 'Matrix', reply: '您已输入问句: '+ input +'\n下面请输入对应的回答'});
+	}
+    ...
+};
 \end{lstlisting}
 \begin{figure}[H]
   \centering
